@@ -1,0 +1,14 @@
+#fondo{
+    background: linear-gradient(to bottom, #85001f 0%, #69001d 100%);
+    
+}
+
+
+body {
+  background: linear-gradient(to bottom, #85001f 0%, #69001d 100%);
+}
+@media only screen and (max-width: 1440px) {
+    body {
+      background: #69001d;
+    }
+}
