@@ -1,12 +1,16 @@
 #fondo{
-    background: linear-gradient(to bottom, #85001f 0%, #69001d 100%);
+    background: #69001d;
     
 }
 
-
-body {
-  background: linear-gradient(to bottom, #85001f 0%, #69001d 100%);
+#imagen-logo{
+    height: 35%;
+    width: 35%;
 }
+body{
+    background: #69001d;
+}
+
 @media only screen and (max-width: 1440px) {
     body {
       background: #69001d;
