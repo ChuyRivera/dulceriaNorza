@@ -31,6 +31,7 @@ const userRoutes = require('./routes/user');
 //rutas
 
 app.use('/',userRoutes);
+app.use('/login',userRoutes);
 app.use('/signup',userRoutes);
 
 
