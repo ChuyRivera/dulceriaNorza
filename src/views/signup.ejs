@@ -6,20 +6,41 @@
         <img src="css/logo2.jpg"
             class="rounded-circle img-thumbnail  mt-5" alt="..." id="imagen-logo">
 
+
     </div>
+    <% if (typeof alert != 'undefined') { %>
+        
+            <% alert.forEach(function(error){ %>
+                  
+                  
+                  <div class="alert alert-warning alert-dismissible fade show fixed-top" role="alert">
+                    <strong>
+                        <%= error.msg %>
+                    </strong> 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+            <% }); %>
+        
+        <% } %>
     <div class="abs-center mt-5">
-        <form action="/signup" class="form text-white">
+        <form action="/signup" class="form text-white" method="POST">
             <div class="form-group">
                 <label for="nombre">Nombre completo:</label>
-                <input type="text" name="fullname" id="fullname" class="form-control" placeholder="John Doe">
+                <input type="text" name="fullname" id="fullname" class="form-control" placeholder="John Doe"  >
             </div>
             <div class="form-group">
                 <label for="email">Correo electrónico:</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="JohnDoe@hotmail.com">
+                <input type="email" name="email" id="email" class="form-control" placeholder="JohnDoe@hotmail.com"  required>
             </div>
             <div class="form-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" name="password" id="password" class="form-control " placeholder="******">
+                <label for="password">Contraseña:</label> 
+                <input type="password" name="password" id="password" class="form-control " placeholder="******" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Confirmar contraseña:</label>
+                <input type="password" name="password1" id="password1" class="form-control " placeholder="******" required>
             </div>
             <div class="row">
                 <div class="col-sm-2"></div>
