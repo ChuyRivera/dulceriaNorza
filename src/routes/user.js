@@ -1,4 +1,5 @@
 const express = require('express');
+const { postLogin } = require('../controller/userController');
 const router = express.Router();
 
 const userController = require('../controller/userController');
@@ -8,10 +9,13 @@ const userController = require('../controller/userController');
 router.get('/', userController.list);
 router.get('/login', userController.login);
 router.get('/signup',userController.renderSignUp);
+router.get('/logout', userController.logout); //Para matar la sesion
+router.get('/products', userController.renderProducts);
 
 
 //Post's
 //router.post('/signup',userController.signup); 
+router.post('/login', userController.postLogin); //Post del formulario de login
 
 
 module.exports = router;
