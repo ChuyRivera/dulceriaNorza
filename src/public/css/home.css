@@ -65,8 +65,12 @@ footer p {
 }
 
 #imagen-logo{
-    height: 35%;
-    width: 35%;
+    height: 150px;
+    width: 150px;
+}
+#imagen-detalle{
+    height: 150px;
+    width: 150px;
 }
 
 .form-control{

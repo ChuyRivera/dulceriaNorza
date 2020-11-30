@@ -9,6 +9,7 @@ const mysql = require('mysql');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
 const passportLocal = require('passport-local').Strategy;
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -17,12 +18,13 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const db = mysql.createConnection({ //es para utilizar mysql sin middleware
     host:'localhost',
     user:'root',
-    password:'',
+    password:'root',
     database:'dulcerianorza',
     port: '3306'
 })
 
 app.use(express.json())
+app.use(fileUpload());
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +42,7 @@ app.use(session({
 const conn = {
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'root',
     database: 'dulcerianorza',
     port: '3306'
 };
@@ -117,7 +119,12 @@ const userRoutes = require('./routes/user');
 app.use('/', userRoutes);
 app.use('/login', userRoutes);
 app.use('/signup', userRoutes);
-app.use('/products',userRoutes);
+app.get('/products',userRoutes);
+app.get('/addProduct',userRoutes);
+app.get('/productDetails/:id', userRoutes);
+app.get('/product/edit/:id',userRoutes);
+app.post('/product/edited/:id',userRoutes);
+app.post('/addProduct',userRoutes);
 
 //post's
 app.post('/signup', urlencodedParser, [

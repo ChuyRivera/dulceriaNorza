@@ -1,0 +1,43 @@
+<%- include('partials/_header.ejs') %>
+
+<div class="container" id="fondo">
+    <div class="container text-center" >
+
+        <img src="css/logo2.jpg"
+            class="rounded-circle img-thumbnail  mt-5" alt="..." id="imagen-logo">
+
+    </div>
+    <div class="abs-center mt-5">
+        <form action="/addProduct" class="form text-white" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre">Nombre del producto:</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de producto">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" name="descripcion" id="descripcion" class="form-control " placeholder="Descripción">
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="text" name="precio" id="precio" class="form-control " placeholder="Precio">
+            </div>
+            <div class="form-group">
+                <label for="upload_image">Imagen del producto</label>
+                    <input class="form-control" type="file" name="upload_image" accept=""/>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8 text-center mb-5"><button type="submit" class="btn btn-primary text-dark bg-white">AÑADIR PRODUCTO</button>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            
+            
+
+        </form>
+    </div>
+</div>
+
+
+
+<%- include('partials/_footer.ejs') %>

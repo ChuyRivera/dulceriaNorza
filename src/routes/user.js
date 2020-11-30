@@ -11,6 +11,11 @@ router.get('/login', userController.login);
 router.get('/signup',userController.renderSignUp);
 router.get('/logout', userController.logout); //Para matar la sesion
 router.get('/products', userController.renderProducts);
+router.get('/addProduct',userController.addProduct);
+router.get('/productDetails/:id', userController.productDetails);
+router.get('/product/edit/:id', userController.productEdit);
+router.post('/product/edited/:id', userController.productEdited);
+router.post('/addProduct',userController.addProductPost);
 
 
 //Post's
