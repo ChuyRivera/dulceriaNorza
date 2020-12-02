@@ -125,6 +125,7 @@ app.get('/productDetails/:id', userRoutes);
 app.get('/product/edit/:id',userRoutes);
 app.get('/cart/:idUsuario',userRoutes);
 app.get('/addCart/:idProducto/:idUsuario',userRoutes);
+app.get('/cartRemove/:id/:idUsuario',userRoutes);
 app.post('/product/edited/:id',userRoutes);
 app.post('/addProduct',userRoutes);
 

@@ -16,6 +16,7 @@ router.get('/productDetails/:id', userController.productDetails);
 router.get('/product/edit/:id', userController.productEdit);
 router.get('/cart/:idUsuario',userController.cart);
 router.get('/addCart/:idProducto/:idUsuario',userController.addCart);
+router.get('/cartRemove/:id/:idUsuario',userController.cartRemove);
 router.post('/product/edited/:id', userController.productEdited);
 router.post('/addProduct',userController.addProductPost);
 

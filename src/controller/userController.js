@@ -243,4 +243,14 @@ controller.productEdited = (req, res) => {
 
 };
 
+controller.cartRemove = (req, res) => {
+    var idUsuario = req.params.idUsuario
+    req.getConnection((err, conn) => {
+        const query = 'DELETE FROM cart WHERE id = ?';
+        conn.query(query, req.params.id, (error, data) => {
+            res.redirect('/cart/' + idUsuario)
+        })
+    }); 
+};
+
 module.exports = controller;

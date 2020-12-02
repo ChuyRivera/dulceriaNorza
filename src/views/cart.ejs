@@ -35,6 +35,11 @@
             </div>
             <div class="row">
                 <div class="col-4">
+                    <form action="/cartRemove/<%=producto.id%>/<%=producto.idUsuario%>">
+                        <button class="btn btn-danger">Quitar</button>
+                    </form>
+                </div>
+                <div class="col-4">
                     <form action="/productDetails/<%=producto.idProducto%>">
                         <button class="btn btn-danger">Ver más</button>
                     </form>
