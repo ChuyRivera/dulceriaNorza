@@ -24,23 +24,15 @@ controller.addCart = (req, res) => {
     });
 };
 
-var products = new Array();
 controller.cart = (req, res) => {
     req.getConnection((err, conn) => {
-        const query = 'SELECT idProducto FROM cart WHERE idUsuario = ?';
+        const query = 'SELECT * FROM product INNER JOIN cart ON product.id = cart.idProducto WHERE idUsuario = ?';
         conn.query(query, req.params.idUsuario, (error, data) => {
-            data.forEach(producto => {
-                const query2 = 'SELECT * FROM product WHERE id = ?';
-                conn.query(query2, producto.idProducto, (error, data2) => {
-                    products.push(data2[0])
-                })
-            })
+            res.render('cart',{
+                data: data
+            });
         })
-    });
-    res.render('cart',{
-        data: products
-    });
-    products = []
+    }); 
 };
 
 controller.addProduct = ((req, res, next) => {

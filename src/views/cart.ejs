@@ -34,13 +34,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-8">
-                    <form action="/addCart/<%=producto.id%>/<%=sesion.id%>">
-                    <button class="btn btn-danger"><i class="fas fa-shopping-cart"></i> Añadir al carrito</button>
-                    </form>
-                </div>
                 <div class="col-4">
-                    <form action="/productDetails/<%=producto.id%>">
+                    <form action="/productDetails/<%=producto.idProducto%>">
                         <button class="btn btn-danger">Ver más</button>
                     </form>
                 </div>
@@ -52,6 +47,9 @@
     </div>
 
 </div>
+
+
+
 
 
 <%- include('partials/_footer.ejs') %>
