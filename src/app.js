@@ -18,7 +18,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const db = mysql.createConnection({ //es para utilizar mysql sin middleware
     host:'localhost',
     user:'root',
-    password:'root',
+    password:'sceptile23',
     database:'dulcerianorza',
     port: '3306'
 })
@@ -42,7 +42,7 @@ app.use(session({
 const conn = {
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'sceptile23',
     database: 'dulcerianorza',
     port: '3306'
 };
@@ -123,6 +123,8 @@ app.get('/products',userRoutes);
 app.get('/addProduct',userRoutes);
 app.get('/productDetails/:id', userRoutes);
 app.get('/product/edit/:id',userRoutes);
+app.get('/cart/:idUsuario',userRoutes);
+app.get('/addCart/:idProducto/:idUsuario',userRoutes);
 app.post('/product/edited/:id',userRoutes);
 app.post('/addProduct',userRoutes);
 
@@ -132,7 +134,19 @@ app.post('/signup', urlencodedParser, [
         .exists()
         .isLength({ min: 5 }),
     check('email', 'El correo electrónico no es válido').isEmail()
-        .normalizeEmail(),
+        .normalizeEmail().custom((value, { req }) => {
+            return new Promise((resolve, reject) => {
+                db.query('select id from user where email =?', req.body.email, (err, res) => {
+                    if (err) {
+                        reject(new Error('Error del servidor'))
+                    }
+                    if (res.length > 0) {
+                        reject(new Error('El correo ya está en uso'))
+                    }
+                    resolve(true)
+                })
+            })
+        }),
         check('password',' "La contraseña debe incluir 1 mínuscula , 1 mayúscula , 1 número, y un cáracter especial(*,/,-)."').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i"),
 ], (req, res) => {
 
@@ -149,11 +163,11 @@ app.post('/signup', urlencodedParser, [
 
         
         req.getConnection((err, conn) => {
-            var sql = "INSERT INTO user (fullname, email,password) VALUES (?,?,?)";
+            var sql = "INSERT INTO user (fullname, email, password, role) VALUES (?,?,?,?)";
             const query = 'INSERT INTO user SET ?';
-            conn.query(sql, [fullname,email,password], (error, data) => {
+            conn.query(sql, [fullname,email,password,0], (error, data) => {
                 console.log(data);
-                res.redirect('/signup');
+                res.redirect('/login');
             })
 
         });

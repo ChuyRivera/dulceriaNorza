@@ -1,7 +1,6 @@
 <%- include('partials/_header.ejs') %>
 <%- include('partials/_navbar.ejs') %>
 
-
 <div class="container container-fluid">
 
     <div class="row">
@@ -37,7 +36,9 @@
             </div>
             <div class="row">
                 <div class="col-8">
-                    <a href="#" class="btn btn-danger"><i class="fas fa-shopping-cart"></i> Añadir al carrito</a>
+                    <form action="/addCart/<%=producto.id%>/<%=sesion.id%>">
+                    <button class="btn btn-danger"><i class="fas fa-shopping-cart"></i> Añadir al carrito</button>
+                    </form>
                 </div>
                 <div class="col-4">
                     <form action="/productDetails/<%=producto.id%>">
@@ -52,9 +53,6 @@
     </div>
 
 </div>
-
-
-
 
 
 <%- include('partials/_footer.ejs') %>
